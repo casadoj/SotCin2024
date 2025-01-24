@@ -1,5 +1,5 @@
 import pandas as pd
-mport xarray as xr
+import xarray as xr
 from pathlib import Path
 import argparse
 from datetime import datetime
@@ -63,10 +63,9 @@ output_dir.mkdir(parents=True, exist_ok=True)
 
 # list of input NetCDF files
 files = sorted(PATH.glob(f'{VAR}_*.nc'))
-# files = sorted(PATH.glob('*.nc'))
+files = [file for file in files if START.year <= int(file.stem.split('_')[1]) <= END.year]
 if not files:
     raise FileNotFoundError(f"No files found in {PATH} matching pattern '{VAR}_*.nc'.")
-    # raise FileNotFoundError(f"No files found in {PATH} matching pattern '*.nc'.")
     
 # open dataset and crop to the study period
 ds = xr.open_mfdataset(
