@@ -1,10 +1,12 @@
 import pandas as pd
 import xarray as xr
 from pathlib import Path
+import argparse
+from datetime import datetime
 
 # Set up argument parser
 parser = argparse.ArgumentParser(
-    description='Compute the montly time series of average global runoff.'
+    description='Compute the montly time series of average global.'
 )
 parser.add_argument(
     '-i',
@@ -17,7 +19,7 @@ parser.add_argument(
     '-v',
     '--var',
     type=str,
-    required=True,
+    default='rowe',
     choices=['dis24', 'rowe', 'sd', 'swir'],
     help=(
         "Variable to be analysed: "
@@ -31,14 +33,14 @@ parser.add_argument(
     '-s',
     '--start',
     type=str,
-    default='1991-01-01',
+    default='1979-01-01',
     help='Start date (format: YYYY-MM-DD).'
 )
 parser.add_argument(
     '-e',
     '--end',
     type=str,
-    default='2020-12-31',
+    default='2024-12-31',
     help='End date (format: YYYY-MM-DD).'
 )
 args = parser.parse_args()
@@ -58,9 +60,10 @@ output_dir.mkdir(parents=True, exist_ok=True)
 output_file = output_dir / f'{VAR}_montly_mean_{START.year}-{END.year}.nc'
 
 # list of input NetCDF files
-files = sorted((base_path / variable).glob(f'{variable}_*.nc'))
+files = sorted(PATH.glob(f'{VAR}_*.nc'))
+files = [file for file in files if START.year <= int(file.stem.split('_')[1]) <= END.year]
 if not files:
-    raise FileNotFoundError(f"No files found in {base_path / variable} matching pattern '{variable}_*.nc'.")
+    raise FileNotFoundError(f"No files found in {PATH} matching pattern '{VAR}_*.nc'.")
 
 # open dataset and crop to the study period
 ds = xr.open_mfdataset(
@@ -76,7 +79,7 @@ ds = ds.rename({'valid_time': 'time', 'latitude': 'lat', 'longitude': 'lon'})
 ds['time'] = ds['time'] - pd.Timedelta(days=1)
 
 # crop to the study period
-ds = ds.sel(time=slice(start_date, end_date))
+ds = ds.sel(time=slice(START, END))
 
 # monthly resample
 ds_monthly = ds.resample(time='1M').mean(skipna=True)
@@ -85,9 +88,8 @@ ds_monthly = ds.resample(time='1M').mean(skipna=True)
 ds_monthly = ds_monthly.chunk({'time': 1, 'lat':'auto', 'lon': 'auto'})
 
 # compute global average
-serie = ds_monthly.mean(['lat', 'lon'], skipna=True).to_pandas()
-serie.name = 'runoff_mm'
+serie = ds_monthly.mean(['lat', 'lon'], skipna=True).compute()
 
 # save output file
-avg.to_netcdf(output_file)
+serie.to_netcdf(output_file)
 print(f'Monthly time series of average global {VAR} saved in: {output_file}')
