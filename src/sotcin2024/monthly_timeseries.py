@@ -6,7 +6,7 @@ from datetime import datetime
 
 # Set up argument parser
 parser = argparse.ArgumentParser(
-    description='Compute the montly time series of average global.'
+    description='Compute the monthly time series global average.'
 )
 parser.add_argument(
     '-i',
