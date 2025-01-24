@@ -1,0 +1,6 @@
+numpy
+xarray
+dask
+tqdm
+datetime
+pathlib
