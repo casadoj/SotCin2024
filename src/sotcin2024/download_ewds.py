@@ -21,10 +21,10 @@ parser.add_argument(
     '--var',
     type=str,
     required=True,
-    choices=['dis', 'rowe', 'swe', 'swi'],
+    choices=['dis24', 'rowe', 'swe', 'swi'],
     help=(
         "Variable to be downloaded: "
-        "'dis':   river discharge in the last 24 hours (m3/s)"
+        "'dis24':   river discharge in the last 24 hours (m3/s)"
         "'rowe':  runoff water equivalent (kg/m2)"
         "'swe':   snow water equivalent (kg/m2)"
         "'swi':   soil wetness index (-)"
@@ -58,7 +58,7 @@ path_var.mkdir(parents=True, exist_ok=True)
 
 # Variables to download
 variable_map = {
-    'dis': 'river_discharge_in_the_last_24_hours',
+    'dis24': 'river_discharge_in_the_last_24_hours',
     'rowe': 'runoff_water_equivalent',
     'swe': 'snow_depth_water_equivalent',
     'swi': 'soil_wetness_index'
@@ -72,10 +72,13 @@ dataset = 'cems-glofas-historical'
 # Loop through years and variables to download data
 for year in tqdm(range(START, END + 1), desc='Year'):
         
+    # define output file
     out_file = path_var / f'{VAR}_{year}.nc'
     if out_file.is_file():
         print(f'File {out_file} already exists, skipping.')
         continue
+    
+    # request and download data
     request = {
         'system_version': ['version_4_0'],
         'hydrological_model': ['lisflood'],
