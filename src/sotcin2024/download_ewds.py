@@ -21,12 +21,12 @@ parser.add_argument(
     '--var',
     type=str,
     required=True,
-    choices=['dis24', 'rowe', 'swe', 'swi'],
+    choices=['dis24', 'rowe', 'sd', 'swi'],
     help=(
         "Variable to be downloaded: "
         "'dis24':   river discharge in the last 24 hours (m3/s)"
         "'rowe':  runoff water equivalent (kg/m2)"
-        "'swe':   snow water equivalent (kg/m2)"
+        "'sd':   snow depth water equivalent (kg/m2)"
         "'swi':   soil wetness index (-)"
     )
 )
@@ -60,7 +60,7 @@ path_var.mkdir(parents=True, exist_ok=True)
 variable_map = {
     'dis24': 'river_discharge_in_the_last_24_hours',
     'rowe': 'runoff_water_equivalent',
-    'swe': 'snow_depth_water_equivalent',
+    'sd': 'snow_depth_water_equivalent',
     'swi': 'soil_wetness_index'
 }
 
