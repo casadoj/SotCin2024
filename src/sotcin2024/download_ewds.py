@@ -6,12 +6,22 @@ from datetime import datetime
 
 
 # Set up argument parser
-parser = argparse.ArgumentParser(description='Download GloFAS4 data from the Early Warning Data Store.')
-parser.add_argument(
-    '--path', type=str, required=True, help='Base path where the data will be saved.'
+parser = argparse.ArgumentParser(
+    description='Download GloFAS4 data from the Early Warning Data Store.'
 )
 parser.add_argument(
-    '--var', type=str, required=True, choices=['dis', 'rowe', 'swe', 'swi'],
+    '-p',
+    '--path',
+    type=str,
+    required=True,
+    help='Base path where the data will be saved.'
+)
+parser.add_argument(
+    '-v',
+    '--var',
+    type=str,
+    required=True,
+    choices=['dis', 'rowe', 'swe', 'swi'],
     help=(
         "Variable to be downloaded: "
         "'dis':   river discharge in the last 24 hours (m3/s)"
@@ -21,10 +31,18 @@ parser.add_argument(
     )
 )
 parser.add_argument(
-    '--start', type=int, default=1979, help='Start year for data download.'
+    '-s',
+    '--start',
+    type=int,
+    default=1979,
+    help='Start year for data download.'
 )
 parser.add_argument(
-    '--end', type=int, default=datetime.now().year - 1, help='End year for data download.'
+    '-e',
+    '--end',
+    type=int,
+    default=datetime.now().year - 1,
+    help='End year for data download.'
 )
 args = parser.parse_args()
 
