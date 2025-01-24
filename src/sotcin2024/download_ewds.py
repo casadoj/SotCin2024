@@ -21,13 +21,13 @@ parser.add_argument(
     '--var',
     type=str,
     required=True,
-    choices=['dis24', 'rowe', 'sd', 'swi'],
+    choices=['dis24', 'rowe', 'sd', 'swir'],
     help=(
         "Variable to be downloaded: "
         "'dis24':   river discharge in the last 24 hours (m3/s)"
         "'rowe':  runoff water equivalent (kg/m2)"
         "'sd':   snow depth water equivalent (kg/m2)"
-        "'swi':   soil wetness index (-)"
+        "'swir':   soil wetness index (-)"
     )
 )
 parser.add_argument(
@@ -61,7 +61,7 @@ variable_map = {
     'dis24': 'river_discharge_in_the_last_24_hours',
     'rowe': 'runoff_water_equivalent',
     'sd': 'snow_depth_water_equivalent',
-    'swi': 'soil_wetness_index'
+    'swir': 'soil_wetness_index'
 }
 
 # Initialize the client

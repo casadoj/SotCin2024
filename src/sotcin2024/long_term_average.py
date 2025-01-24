@@ -1,4 +1,5 @@
-import xarray as xr
+import pandas as pd
+mport xarray as xr
 from pathlib import Path
 import argparse
 from datetime import datetime
@@ -19,27 +20,27 @@ parser.add_argument(
     '--var',
     type=str,
     required=True,
-    choices=['dis24', 'rowe', 'sd', 'swi'],
+    choices=['dis24', 'rowe', 'sd', 'swir'],
     help=(
         "Variable to be analysed: "
         "'dis24':   river discharge in the last 24 hours (m3/s)"
         "'rowe':  runoff water equivalent (kg/m2)"
         "'sd':   snow depth water equivalent (kg/m2)"
-        "'swi':   soil wetness index (-)"
+        "'swir':   soil wetness index (-)"
     )
 )
 parser.add_argument(
     '-s',
     '--start',
     type=str,
-    default='1991-01-02',
+    default='1991-01-01',
     help='Start date (format: YYYY-MM-DD).'
 )
 parser.add_argument(
     '-e',
     '--end',
     type=str,
-    default='2021-01-01',
+    default='2020-12-31',
     help='End date (format: YYYY-MM-DD).'
 )
 args = parser.parse_args()
@@ -77,6 +78,9 @@ ds = xr.open_mfdataset(
 # rename variables
 ds = ds.rename({'valid_time': 'time', 'latitude': 'lat', 'longitude': 'lon'})
 
+# convert time convention to beginning-of-timestep
+ds['time'] = ds['time'] - pd.Timedelta(days=1)
+
 # crop to the study period
 ds = ds.sel(time=slice(START, END))
 
@@ -84,7 +88,7 @@ ds = ds.sel(time=slice(START, END))
 ds = ds.chunk({'time': 365, 'lat':'auto', 'lon': 'auto'})
 
 # compute average
-avg = ds.mean('time')
+avg = ds.mean('time', skipna=True)
 
 # save output file
 avg.to_netcdf(output_file)
