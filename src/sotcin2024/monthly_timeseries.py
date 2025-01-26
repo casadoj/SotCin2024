@@ -52,7 +52,7 @@ try:
     START = datetime.strptime(args.start, '%Y-%m-%d')
     END = datetime.strptime(args.end, '%Y-%m-%d')
 except ValueError as e:
-    raise ValueError(f"Invalid date format: {e}. Please use 'YYYY-MM-DD'.")
+    raise ValueError(f"Invalid date format: {END}. Please use 'YYYY-MM-DD'.")
 
 # output directory and output file
 output_dir = PATH / 'thresholds'
