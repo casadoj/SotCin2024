@@ -4,7 +4,7 @@ Data processing and figures for the chapter "Global Climate" in the "State of Cl
 
 ## Data
 
-The **river discharge** and **runoff** data are the results from the [GloFASv4 (Global Flood Awareness System)](https://confluence.ecmwf.int/display/CEMS/Latest+operational+GloFAS+release) historical run, extracted from the [Copernicus Early Warning Data Store](https://ewds.climate.copernicus.eu/). The simulation spans from 1979 up until present, with 1 arc-minute spatial resolution and daily temporal resolution. It is produced by forcing the calibrated [LISFLOOD-OS](https://ec-jrc.github.io/lisflood/) hydrological model with the meteorogy from ERA5.
+The **river discharge** and **runoff** data are the results from the [GloFASv4 (Global Flood Awareness System)](https://confluence.ecmwf.int/display/CEMS/Latest+operational+GloFAS+release) historical run, extracted from the [Copernicus Early Warning Data Store](https://ewds.climate.copernicus.eu/). The simulation spans from 1979 up until present, with 3 arc-minute spatial resolution and daily temporal resolution. It is produced by forcing the calibrated [LISFLOOD-OS](https://ec-jrc.github.io/lisflood/) hydrological model with the meteorogy from ERA5.
 
 The El Niño-Sourthern Oscillation (ENSO) ONI index was retrieved from https://origin.cpc.ncep.noaa.gov/products/analysis_monitoring/ensostuff/ONI_v5.php.
 
