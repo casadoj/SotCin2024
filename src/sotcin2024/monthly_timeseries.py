@@ -57,7 +57,7 @@ except ValueError as e:
 # output directory and output file
 output_dir = PATH / 'thresholds'
 output_dir.mkdir(parents=True, exist_ok=True)
-output_file = output_dir / f'{VAR}_montly_mean_{START.year}-{END.year}.nc'
+output_file = output_dir / f'{VAR}_monthly_mean_{START.year}-{END.year}.nc'
 
 # list of input NetCDF files
 files = sorted(PATH.glob(f'{VAR}_*.nc'))
