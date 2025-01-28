@@ -170,5 +170,8 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
-# raw NetCDF files
-.nc
+# ignore NetCDF files
+*.nc
+
+# ignore Bash scripts
+*.sh
