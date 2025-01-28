@@ -1,6 +1,6 @@
 # State of the Climate in 2024
 
-Data processing and figures for the chapter "Global Climate" in the "State of Climate in 2024" (Bulletin of the American Meteorological Society).
+Data processing and figures for the chapter _Global Climate_ in the report _State of Climate in 2024_ (Bulletin of the American Meteorological Society).
 
 ## Data
 
