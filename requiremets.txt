@@ -1,5 +1,6 @@
 numpy
 xarray
+rioxarray
 dask
 tqdm
 datetime
