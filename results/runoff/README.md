@@ -8,4 +8,4 @@ This folder contains the processed data required to produce the figures in the r
 * ***runoff_interannual_variability.csv*** contains the monthly time series of global runoff anomaly (mm/day), the ENSO ONI index, and the PDO index.
 
 ![interannual_variability](./plots/interannual_variability.jpg)
-***Figure 2**. Interannual variability of the global average runoff (mm/day) and comparison with the ENSO ONI and PDO indices.*
+***Figure 2**. Interannual variability of the global monthly runoff (mm/month) and comparison with the ENSO ONI and PDO indices.*
