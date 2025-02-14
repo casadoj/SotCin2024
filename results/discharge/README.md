@@ -2,7 +2,7 @@ This folder contains the processed data required to produce the figures in the r
 
 * ***discharge_anomaly.zip*** contains a NetCDF file with a map of the difference between the river discharge in 2024 and the average in the period 1991-2020.
 
-![2024_anomaly](./plots/map_anomaly.jpg)
+![2024_anomaly_discharge](./plots/map_anomaly_discharge.jpg)
 ***Figure 1**. River discharge anomaly in 2024 with respect to the reference period 1991-2020.*
 
 * ***discharge_annual_anomaly_by_ocean.csv*** contains a yearly time series of discharge anomaly (km3/year) from 1979 to 2024 compared with the period 1991-2020, disaggregated by ocean. These data is meant to be used to generate the lineplots of interannual variability of freshwater discharge in Figure 2.
@@ -11,5 +11,5 @@ This folder contains the processed data required to produce the figures in the r
 
 * ***discharge_seasonality_by_ocean.nc*** contains the monthly climatology of dicharge (mean and standard deviation) for the period 1991-2020, and the monthly values in 2024; values are disaggregated by ocean. These data is meant to generate the plot of seasonality of freshwater discharge in Figure 2.
 
-![Interannual variability](./plots/interannual_variability.jpg)
-***Figure 2**. Interannual variability of freshwater discharge (km3/yr) by ocean. The panels on the left column represent the annual anomaly (black line) and the monthly anomalies (shaded background). The panels of the right column represent the seasonality, comparing the monthly averages in the climatology (black line), a spread of one standard deviation of that climatology (gray shade), and the monthly values in 2024 (blue line).*
+![Interannual variability](./plots/interannual_variability_discharge.jpg)
+***Figure 2**. Interannual variability and seasonality of freshwater discharge to global ocean basins. In the left panels, the black line represents the annual discharge anomaly, and the background heatmap shows the monthly anomalies with respect to the reference seasonality. The right panels exhibit the seasonality, where the black line represents the climatological mean, the grey shading indicates the interquartile range in the climatology, and the blue line shows the seasonal variation in 2024.*
