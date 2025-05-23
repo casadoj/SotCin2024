@@ -1,7 +1,9 @@
-numpy
-xarray
-rioxarray
+cartopy
 dask
-tqdm
 datetime
+matplotlib
+numpy
 pathlib
+rioxarray
+tqdm
+xarray
