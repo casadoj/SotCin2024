@@ -1,6 +1,10 @@
+<img src="./images/copernicus_logo.png" alt="Logo Copernicus" width="280" align="center"><img src="./images/copernicus_emergency_management.png" alt="Logo CEMS" width="200" align="center">
+
+![Python_3.13](https://img.shields.io/badge/Python-%3E%3D3.13-blue?labelColor=343b41) &nbsp; [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) &nbsp; [![Docs](https://img.shields.io/badge/docs-online-blue.svg)](https://github.com/casadoj/SotCin2024/wiki)
+
 # State of the Climate in 2024
 
-Data processing and figures for the chapter _Global Climate_ in the report _State of Climate in 2024_ (Bulletin of the American Meteorological Society).
+Data processing and figures for the chapter _Global Climate_ in the report _State of the Climate in 2024_ (Bulletin of the American Meteorological Society).
 
 ## Data
 
@@ -33,9 +37,11 @@ To define the river outlets into the four oceans (Atlantic, Pacific, Indian and 
 ![River Outlets](./notebook/river_outlets.png)
 ***Figure 1**. River outlets selected to compute the discharge into the oceans. Colours represent the ocean basins.*
 
-### Runoff
+## Reference
 
-## Results
+The results of this analysis were included in the section *River discharge and runoff* section of the *Global Climate* chapter of the BAMS *State of the Climate in 2024* report:
+
+Casado-Rodríguez, J., S. Grimaldi, and P. Salamon, 2025: River discharge and runoff [in "State of the Climate in 2024"]. Bull. Amer. Meteor. Soc., 106 (8), S71-S73, https://doi.org/10.1175/BAMS-D-25-0102.1.
 
 
 
