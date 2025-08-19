@@ -39,8 +39,6 @@ To define the river outlets into the four oceans (Atlantic, Pacific, Indian and 
 
 ## Reference
 
-The results of this analysis were included in the section *River discharge and runoff* section of the *Global Climate* chapter of the BAMS *State of the Climate in 2024* report:
-
 Casado-Rodríguez, J., S. Grimaldi, and P. Salamon, 2025: River discharge and runoff [in "State of the Climate in 2024"]. Bull. Amer. Meteor. Soc., 106 (8), S71-S73, https://doi.org/10.1175/BAMS-D-25-0102.1.
 
 
