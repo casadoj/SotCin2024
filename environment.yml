@@ -1,0 +1,14 @@
+name: bams
+channels:
+  - conda-forge
+  - anaconda
+  - defaults
+dependencies:
+  - python
+  - numpy
+  - tqdm
+  - xarray
+  - dask
+  - rioxarray
+  - pathlib
+prefix: C:\DEV\Anaconda3\envs\bams
