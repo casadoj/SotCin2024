@@ -174,7 +174,7 @@ cython_debug/
 *.nc
 
 # ignore Bash scripts
-*.sh
+# *.sh
 
 # unnecessary folders
 GIS/
