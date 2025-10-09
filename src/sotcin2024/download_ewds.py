@@ -44,6 +44,14 @@ parser.add_argument(
     default=datetime.now().year - 1,
     help='End year for data download.'
 )
+parser.add_argument(
+    '-a',
+    '--area',
+    nargs=4,
+    type=float,
+    default=None,
+    help='Area of interest: N, W, S, E (default: global).'
+)
 args = parser.parse_args()
 
 # Read arguments
@@ -89,6 +97,8 @@ for year in tqdm(range(START, END + 1), desc='Year'):
         'hday': [f'{day:02}' for day in range(1, 32)],
         'data_format': 'netcdf',
         'download_format': 'unarchived'
+        "area": [90, -180, -60, 180] if args.area is None else args.area
     }
     client.retrieve(dataset, request).download(out_file)
     print(f'Saved file: {out_file}')
+
