@@ -44,16 +44,18 @@ parser.add_argument(
     default=datetime.now().year - 1,
     help='End year for data download.'
 )
+parser.add_argument(
+    '-a',
+    '--area',
+    nargs=4,
+    type=float,
+    default=None,
+    help='Area of interest: N, W, S, E (default: global).'
+)
 args = parser.parse_args()
 
-# Read arguments
-PATH = Path(args.path)
-VAR = args.var
-START = args.start
-END = args.end
-
 # output path
-path_var = PATH / VAR
+path_var = Path(args.path) / args.var
 path_var.mkdir(parents=True, exist_ok=True)
 
 # Variables to download
@@ -65,15 +67,15 @@ variable_map = {
 }
 
 # Initialize the client
-client = cdsapi.Client(timeout=600)  # Increase timeout as needed
+client = cdsapi.Client( timeout=600)  # Increase timeout as needed
 
 dataset = 'cems-glofas-historical'
 
 # Loop through years and variables to download data
-for year in tqdm(range(START, END + 1), desc='Year'):
+for year in tqdm(range(args.start, args.end + 1), desc='Year'):
         
     # define output file
-    out_file = path_var / f'{VAR}_{year}.nc'
+    out_file = path_var / f'{args.var}_{year}.nc'
     if out_file.is_file():
         print(f'File {out_file} already exists, skipping.')
         continue
@@ -83,12 +85,14 @@ for year in tqdm(range(START, END + 1), desc='Year'):
         'system_version': ['version_4_0'],
         'hydrological_model': ['lisflood'],
         'product_type': ['consolidated'],
-        'variable': [variable_map[VAR]],
+        'variable': [variable_map[args.var]],
         'hyear': [f'{year}'],
         'hmonth': [f'{month:02}' for month in range(1, 13)],
         'hday': [f'{day:02}' for day in range(1, 32)],
+        'area': [90, -180, -60, 180] if args.area is None else args.area,
         'data_format': 'netcdf',
         'download_format': 'unarchived'
     }
     client.retrieve(dataset, request).download(out_file)
     print(f'Saved file: {out_file}')
+
