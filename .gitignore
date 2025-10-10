@@ -181,4 +181,4 @@ GIS/
 data/world_ocean_atlas/
 
 # debugging
-.vscode/*.json
+.vscode/launch.json
